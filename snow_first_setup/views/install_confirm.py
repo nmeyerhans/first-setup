@@ -2,6 +2,9 @@
 #
 # Confirmation and installer step for install mode.
 
+import os
+import json
+
 from gi.repository import Gtk, GLib, Adw
 
 _ = __builtins__["_"]
@@ -248,13 +251,11 @@ class VanillaInstallConfirm(Adw.Bin):
 
     def __load_images(self):
         # File search order - each candidate will check for session-specific variant
-        import os, json
         candidates = [
             "/usr/share/snow/images.json",
             "/etc/snow/images.json",
             os.path.abspath(os.path.join(self.__window.moduledir, "images.json")),
         ]
-        
         images = []  # list of display strings
         image_map = {}  # display -> target reference
         for path in candidates:

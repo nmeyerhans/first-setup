@@ -23,6 +23,7 @@ _ = __builtins__["_"]
 
 import snow_first_setup.core.backend as backend
 import snow_first_setup.core.applications as applications
+import snow_first_setup.core.session as session
 
 @Gtk.Template(resource_path="/org/frostyard/FirstSetup/gtk/applications-dialog.ui")
 class VanillaApplicationsDialog(Adw.Window):
@@ -117,7 +118,7 @@ class VanillaLayoutApplications(Adw.Bin):
         super().__init__(**kwargs)
         self.__window = window
 
-        apps_file_path = os.path.join(window.moduledir, "apps.json")
+        apps_file_path = session.get_session_specific_file("apps.json", window.moduledir)
         with open(apps_file_path) as file:
             self.__apps = json.load(file)
 

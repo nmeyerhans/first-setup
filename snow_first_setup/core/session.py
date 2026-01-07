@@ -4,7 +4,7 @@
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundationat version 3 of the License.
+# the Free Software Foundation at version 3 of the License.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -63,3 +63,30 @@ def get_session_specific_file(base_filename: str, moduledir: str) -> str:
     
     # Return the base file path
     return os.path.join(moduledir, base_filename)
+
+
+def get_session_specific_path(base_path: str) -> str:
+    """
+    Get the session-specific version of a file path if it exists, otherwise return the base path.
+    
+    For example, if base_path is "/etc/snow/images.json" and we're in a KDE session,
+    this will return "/etc/snow/images-kde.json" if it exists, otherwise "/etc/snow/images.json".
+    
+    Args:
+        base_path: The full path to the base file
+    
+    Returns:
+        str: The full path to the session-specific file or the base file
+    """
+    if is_kde_session():
+        # Extract directory, name and extension
+        dirname = os.path.dirname(base_path)
+        basename = os.path.basename(base_path)
+        name, ext = os.path.splitext(basename)
+        kde_path = os.path.join(dirname, f"{name}-kde{ext}")
+        
+        # Return KDE-specific file if it exists, otherwise fall back to base file
+        if os.path.exists(kde_path):
+            return kde_path
+    
+    return base_path

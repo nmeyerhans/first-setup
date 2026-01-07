@@ -247,34 +247,22 @@ class VanillaInstallConfirm(Adw.Bin):
             app.quit()
 
     def __load_images(self):
-        # File search order
+        # File search order - each candidate will check for session-specific variant
         import os, json
-        
-        # Build candidates list with session-specific file support
-        base_candidates = [
+        candidates = [
             "/usr/share/snow/images.json",
             "/etc/snow/images.json",
             os.path.abspath(os.path.join(self.__window.moduledir, "images.json")),
         ]
         
-        # If in KDE session, prepend KDE-specific candidates
-        candidates = []
-        if session.is_kde_session():
-            for path in base_candidates:
-                # Create KDE-specific version of path
-                dirname = os.path.dirname(path)
-                basename = os.path.basename(path)
-                name, ext = os.path.splitext(basename)
-                kde_path = os.path.join(dirname, f"{name}-kde{ext}")
-                candidates.append(kde_path)
-        candidates.extend(base_candidates)
-        
         images = []  # list of display strings
         image_map = {}  # display -> target reference
         for path in candidates:
-            if os.path.exists(path):
+            # Check for session-specific version first, then fall back to base path
+            actual_path = session.get_session_specific_path(path)
+            if os.path.exists(actual_path):
                 try:
-                    with open(path, 'r', encoding='utf-8') as f:
+                    with open(actual_path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
                     # Accept formats: list[str], {images:[str]}, list[dict], {images:[{..}]}
                     # Normalize to list of image description dicts or entries

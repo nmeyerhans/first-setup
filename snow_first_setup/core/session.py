@@ -25,13 +25,18 @@ def is_kde_session() -> bool:
         bool: True if running in a KDE/Plasma session, False otherwise.
     """
     # Check XDG_CURRENT_DESKTOP environment variable
-    xdg_current_desktop = os.environ.get("XDG_CURRENT_DESKTOP", "").lower()
-    if "kde" in xdg_current_desktop or "plasma" in xdg_current_desktop:
-        return True
+    # According to XDG spec, this can be a colon-separated list of identifiers
+    xdg_current_desktop = os.environ.get("XDG_CURRENT_DESKTOP", "")
+    if xdg_current_desktop:
+        # Split by colon and check each component
+        for desktop in xdg_current_desktop.split(":"):
+            desktop_lower = desktop.strip().lower()
+            if desktop_lower == "kde" or desktop_lower == "plasma":
+                return True
     
     # Check XDG_SESSION_DESKTOP environment variable as fallback
-    xdg_session_desktop = os.environ.get("XDG_SESSION_DESKTOP", "").lower()
-    if "kde" in xdg_session_desktop or "plasma" in xdg_session_desktop:
+    xdg_session_desktop = os.environ.get("XDG_SESSION_DESKTOP", "").strip().lower()
+    if xdg_session_desktop == "kde" or xdg_session_desktop == "plasma":
         return True
     
     return False

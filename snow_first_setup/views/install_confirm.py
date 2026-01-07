@@ -2,11 +2,15 @@
 #
 # Confirmation and installer step for install mode.
 
+import os
+import json
+
 from gi.repository import Gtk, GLib, Adw
 
 _ = __builtins__["_"]
 
 import snow_first_setup.core.backend as backend
+import snow_first_setup.core.session as session
 
 
 @Gtk.Template(resource_path="/org/frostyard/FirstSetup/gtk/install-confirm.ui")
@@ -246,8 +250,7 @@ class VanillaInstallConfirm(Adw.Bin):
             app.quit()
 
     def __load_images(self):
-        # File search order
-        import os, json
+        # File search order - each candidate will check for session-specific variant
         candidates = [
             "/usr/share/snow/images.json",
             "/etc/snow/images.json",
@@ -256,9 +259,11 @@ class VanillaInstallConfirm(Adw.Bin):
         images = []  # list of display strings
         image_map = {}  # display -> target reference
         for path in candidates:
-            if os.path.exists(path):
+            # Check for session-specific version first, then fall back to base path
+            actual_path = session.get_session_specific_path(path)
+            if os.path.exists(actual_path):
                 try:
-                    with open(path, 'r', encoding='utf-8') as f:
+                    with open(actual_path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
                     # Accept formats: list[str], {images:[str]}, list[dict], {images:[{..}]}
                     # Normalize to list of image description dicts or entries

@@ -1,0 +1,86 @@
+{
+    "office": [
+        {
+            "name": "LibreOffice",
+            "id": "org.libreoffice.LibreOffice"
+        },
+        {
+            "name": "OnlyOffice",
+            "id": "org.onlyoffice.desktopeditors",
+            "active": false
+        }
+    ],
+    "utilities": [
+        {
+            "name": "DistroShelf",
+            "id": "com.ranfdev.DistroShelf"
+        },
+        {
+            "name": "KDE Connect",
+            "id": "org.kde.kdeconnect"
+        },
+        {
+            "name": "Flatseal",
+            "id": "com.github.tchx84.Flatseal"
+        },
+        {
+            "name": "KCalc Calculator",
+            "id": "org.kde.kcalc"
+        },
+        {
+            "name": "Metadata Cleaner",
+            "id": "fr.romainvigier.MetadataCleaner"
+        },
+        {
+            "name": "Rnote",
+            "id": "com.github.flxzt.rnote"
+        },
+        {
+            "name": "Elisa Music Player",
+            "id": "org.kde.elisa"
+        },
+        {
+            "name": "Warehouse",
+            "id": "io.github.flattool.Warehouse"
+        },
+        {
+            "name": "Thunderbird",
+            "id": "org.mozilla.Thunderbird"
+        }
+    ],
+    "browsers": [
+        {
+            "name": "Firefox",
+            "id": "org.mozilla.firefox"
+        },
+        {
+            "name": "Microsoft Edge",
+            "id": "com.microsoft.Edge"
+        },
+        {
+            "name": "Google Chrome",
+            "id": "com.google.Chrome",
+            "active": false
+        },
+        {
+            "name": "Chromium",
+            "id": "org.chromium.Chromium",
+            "active": false
+        },
+        {
+            "name": "Brave Browser",
+            "id": "com.brave.Browser",
+            "active": false
+        },
+        {
+            "name": "Floorp",
+            "id": "one.ablaze.floorp",
+            "active": false
+        },
+        {
+            "name": "LibreWolf",
+            "id": "io.gitlab.librewolf-community",
+            "active": false
+        }
+    ]
+}

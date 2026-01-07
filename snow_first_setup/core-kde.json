@@ -1,0 +1,88 @@
+{
+    "core": [
+        {
+            "name": "Bazaar App Store",
+            "id": "io.github.kolunmi.Bazaar"
+        },
+        {
+            "name": "MissionCenter System Monitor",
+            "id": "io.missioncenter.MissionCenter"
+        },
+        {
+            "name": "DistroShelf",
+            "id": "com.ranfdev.DistroShelf"
+        },
+        {
+            "name": "Elisa Music Player",
+            "id": "org.kde.elisa"
+        },
+        {
+            "name": "KCalc Calculator",
+            "id": "org.kde.kcalc"
+        },
+        {
+            "name": "Merkuro Calendar",
+            "id": "org.kde.merkuro.calendar"
+        },
+        {
+            "name": "KCharSelect",
+            "id": "org.kde.kcharselect"
+        },
+        {
+            "name": "KClock",
+            "id": "org.kde.kclock"
+        },
+        {
+            "name": "KRDC Remote Desktop",
+            "id": "org.kde.krdc"
+        },
+        {
+            "name": "KAddressBook",
+            "id": "org.kde.kaddressbook"
+        },
+        {
+            "name": "Filelight Disk Usage",
+            "id": "org.kde.filelight"
+        },
+        {
+            "name": "Skanlite Scanner",
+            "id": "org.kde.skanlite"
+        },
+        {
+            "name": "Okular Document Viewer",
+            "id": "org.kde.okular"
+        },
+        {
+            "name": "Ark Archive Manager",
+            "id": "org.kde.ark"
+        },
+        {
+            "name": "KFontView Font Viewer",
+            "id": "org.kde.kfontview"
+        },
+        {
+            "name": "Gwenview Image Viewer",
+            "id": "org.kde.gwenview"
+        },
+        {
+            "name": "Plasma System Monitor",
+            "id": "org.kde.plasma.systemmonitor"
+        },
+        {
+            "name": "Marble Maps",
+            "id": "org.kde.marble.maps"
+        },
+        {
+            "name": "KWrite Text Editor",
+            "id": "org.kde.kwrite"
+        },
+        {
+            "name": "Haruna Video Player",
+            "id": "org.kde.haruna"
+        },
+        {
+            "name": "KWeather",
+            "id": "org.kde.kweather"
+        }
+    ]
+}

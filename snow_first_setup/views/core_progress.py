@@ -7,6 +7,7 @@ import json
 import os
 import snow_first_setup.core.backend as backend
 import snow_first_setup.core.applications as applications
+import snow_first_setup.core.session as session
 
 from gi.repository import Gtk, Adw, GLib
 
@@ -43,7 +44,7 @@ class VanillaCoreProgress(Adw.Bin):
 
     def __load_and_install_core_apps(self):
         # Load core.json and queue flatpak installations
-        core_json_path = os.path.join(self.__window.moduledir, "core.json")
+        core_json_path = session.get_session_specific_file("core.json", self.__window.moduledir)
         
         try:
             with open(core_json_path, 'r', encoding='utf-8') as f:

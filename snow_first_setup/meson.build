@@ -38,8 +38,11 @@ snow_first_setup_sources = [
   'window.py',
   'dialog.py',
   'apps.json',
+  'apps-kde.json',
   'core.json',
-  'images.json'
+  'core-kde.json',
+  'images.json',
+  'images-kde.json'
 ]
 
 install_data(snow_first_setup_sources, install_dir: moduledir)
